@@ -43,11 +43,12 @@ class ProjectController extends Controller
 
         $imgPath = null;
         if (isset($data['img_src'])) {
-            $imgPath = Storage::put('/', $data['img_src']);
+            $imgPath = Storage::put('images', $data['img_src']);
         }
 
         $newProject = Project::create([
             'title' => $data['title'],
+            'slug' => str()->slug($data['title']),
             'img_src' => $imgPath,
             'description' => $data['description'],
             'type_id' => $data['type_id'],
@@ -93,7 +94,7 @@ class ProjectController extends Controller
             if ($project->img_src) {
                 Storage::delete($project->img_src);
             }
-            $imgPath = Storage::put('/', $data['img_src']);
+            $imgPath = Storage::put('images', $data['img_src']);
         }
         else if (isset($data['remove_img_src'])) {
             if ($project->img_src) {
@@ -105,6 +106,7 @@ class ProjectController extends Controller
         $updatedProject = Project::findOrFail($project->id); 
         $updatedProject->update([
             'title' => $data['title'],
+            'slug' => str()->slug($data['title']),
             'img_src' => $imgPath,
             'description' => $data['description'],
             'type_id' => $data['type_id'],

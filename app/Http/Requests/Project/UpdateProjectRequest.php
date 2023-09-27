@@ -26,7 +26,6 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'title' => 'required|max:32',
-            'slug' => 'required|max:64',
             'img_src' => 'nullable|image|max:4096',
             'remove_img_src' => 'nullable|boolean',
             'description' => 'required',

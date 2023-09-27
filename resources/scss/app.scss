@@ -1,0 +1,33 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+
+    a {
+        color: black;
+    }
+
+    header {
+        background-color: whitesmoke;
+        height: 70px;
+
+        .header-logo {
+            height: 80%;
+            margin: 10% 0;
+        }
+    }
+
+    main {
+        height: calc(100vh - 140px);
+
+        form {
+            background-color: whitesmoke;
+            border-radius: 20px;
+        }
+    }
+
+    footer {
+        background-color: whitesmoke;
+        height: 70px;
+    }
+}
+

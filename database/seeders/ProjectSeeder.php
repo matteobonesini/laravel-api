@@ -26,7 +26,7 @@ class ProjectSeeder extends Seeder
             $coverImg = null;
 
             while($coverImg == null) {
-                $coverImg = fake()->image(storage_path('app/public/images'), 360, 360, 'animals', false, true, null, true, 'jpg');
+                $coverImg = fake()->image(storage_path('app/public/images'), 360, 360, null, false, false, false, false, 'jpg');
             }
 
             // $coverImg = fake()->image(storage_path('app/public/images'), 360, 360, 'animals', false, true, null, true, 'jpg');
@@ -46,6 +46,7 @@ class ProjectSeeder extends Seeder
             $newProject->description = fake()->paragraph();
             $newProject->type_id = fake()->numberBetween(1, 3);
             $newProject->save();
+            $newProject->technologies()->attach(fake()->numberBetween(1, 4));
         }
     }
 }

@@ -22,11 +22,18 @@ class ProjectSeeder extends Seeder
         Storage::makeDirectory('images');
 
         for ($i = 0; $i < 10; $i++) {
-
             
-            $coverImg = fake()->image(storage_path('app/public/images'), 360, 360, 'animals', false, true, 'cats', false, 'jpg');
+            $coverImg = null;
+
+            while($coverImg == null) {
+                $coverImg = fake()->image(storage_path('app/public/images'), 360, 360, 'animals', false, true, null, true, 'jpg');
+            }
+
+            // $coverImg = fake()->image(storage_path('app/public/images'), 360, 360, 'animals', false, true, null, true, 'jpg');
+
             if ($coverImg != '') {
                 $coverImg = 'images/'.$coverImg;
+                var_dump($coverImg);
             }
             else {
                 $coverImg = null;

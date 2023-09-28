@@ -17,6 +17,18 @@ class Project extends Model
         'type_id'
     ];
 
+    protected $hidden = [
+        'id'
+    ];
+
+    protected $appends = [
+        'full_img_src'
+    ];
+
+    public function getFullImgSrcAttribute() {
+        return asset('storage/' . $this->img_src);
+    }
+
     public function type()
     {
         return $this->belongsTo(Type::class);

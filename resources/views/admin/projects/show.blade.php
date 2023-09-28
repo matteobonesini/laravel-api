@@ -18,7 +18,8 @@
                     Nessun tag associato a questo post
                 @endforelse
             </div>
-            <img class="w-25 object-fit-contain my-5" src="{{ asset('storage/' . $project->img_src) }}" alt="Photo">
+            {{-- <img class="w-25 object-fit-contain my-5" src="{{ asset('storage/' . $project->img_src) }}" alt="Photo"> --}}
+            <img class="w-25 object-fit-contain my-5" src="{{ $project->full_img_src }}" alt="Photo">
             <p>{{ $project->description }}</p>
             <div>
                 <button class="btn">

@@ -24,7 +24,7 @@ class ProjectSeeder extends Seeder
         Storage::deleteDirectory('images');
         Storage::makeDirectory('images');
 
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 24; $i++) {
             
             $coverImg = null;
 
@@ -44,7 +44,7 @@ class ProjectSeeder extends Seeder
 
             $newProject = new Project();
             $newProject->title = fake()->firstName();
-            $newProject->slug = str()->slug($newProject->title);
+            $newProject->slug = str()->slug($newProject->title . '-' . rand(1, 9));
             $newProject->img_src = $coverImg;
             $newProject->description = fake()->paragraph();
             $newProject->type_id = fake()->numberBetween(1, 3);

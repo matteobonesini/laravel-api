@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Project;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,6 +15,8 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('project_technology')->truncate();
+
         Schema::withoutForeignKeyConstraints(function () {
             Project::truncate();
         });
@@ -46,7 +49,7 @@ class ProjectSeeder extends Seeder
             $newProject->description = fake()->paragraph();
             $newProject->type_id = fake()->numberBetween(1, 3);
             $newProject->save();
-            $newProject->technologies()->attach(fake()->numberBetween(1, 4));
+            $newProject->technologies()->attach(fake()->randomElements([1, 2, 3, 4], 3));
         }
     }
 }

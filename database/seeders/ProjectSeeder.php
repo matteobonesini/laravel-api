@@ -21,15 +21,15 @@ class ProjectSeeder extends Seeder
         Storage::deleteDirectory('images');
         Storage::makeDirectory('images');
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             
             $coverImg = null;
 
-            while($coverImg == null) {
+            /* while($coverImg == null) {
                 $coverImg = fake()->image(storage_path('app/public/images'), 360, 360, null, false, false, false, false, 'jpg');
-            }
+            } */
 
-            // $coverImg = fake()->image(storage_path('app/public/images'), 360, 360, 'animals', false, true, null, true, 'jpg');
+            $coverImg = fake()->image(storage_path('app/public/images'), 360, 360, null, false, false, false, false, 'jpg');
 
             if ($coverImg != '') {
                 $coverImg = 'images/'.$coverImg;
